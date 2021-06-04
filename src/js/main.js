@@ -13,6 +13,7 @@ class Coverage {
 
         let pos = 0;
         let text = this.content[count].text;
+        let ranges = this.content[count].ranges;
 
         while (pos < this.content[count].text.length) {
             if (text.indexOf('@media', pos) == -1) break;
@@ -23,7 +24,7 @@ class Coverage {
             pos = rangeUp.start = text.indexOf('@media', pos);
             pos = rangeUp.end = text.indexOf('{', pos) + 1;
 
-            this.content[count].ranges.push(rangeUp);
+            ranges.push(rangeUp);
 
             let regexp = /}|s+\n|}/g;
             regexp.lastIndex = pos;
@@ -32,11 +33,15 @@ class Coverage {
 
             pos = rangeDown.start = posIndex.index;
             pos = rangeDown.end = text.indexOf('}', pos) + 1;
-            this.content[count].ranges.push(rangeDown);
+            ranges.push(rangeDown);
 
         }
 
-        console.log(this.content[count].ranges)
+        sortByAge(ranges);
+
+        function sortByAge(arr) {
+            arr.sort((a, b) => a.start > b.start ? 1 : -1);
+        }
 
     };
 
