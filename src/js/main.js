@@ -76,6 +76,8 @@ class Coverage {
         }
 
         // найти пустые медиа и удалить
+        // подхватить используемые правила @keyframes
+
         document.body.append(p)
         document.body.append(textarea);
     }
