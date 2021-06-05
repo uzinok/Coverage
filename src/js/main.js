@@ -7,9 +7,6 @@ class Coverage {
     }
 
     getMedia = function (count) {
-        // добавить медиа выражения в row.ranges
-        // где они заканчиваются
-        // отсортировать row.ranges
 
         let pos = 0;
         let text = this.content[count].text;
@@ -26,7 +23,7 @@ class Coverage {
 
             ranges.push(rangeUp);
 
-            let regexp = /[}|\f\n\r\t\v​\u00A0\u1680​\u180e\u2000​\u2001\u2002​\u2003\u2004​\u2005\u2006​\u2007\u2008​\u2009\u200a​\u2028\u2029​\u2028\u2029​\u202f\u205f​\u3000|]}/g;
+            let regexp = /[}|\s|]}/g;
             regexp.lastIndex = pos;
 
             let posIndex = regexp.exec(text);
@@ -36,6 +33,21 @@ class Coverage {
             ranges.push(rangeDown);
 
         }
+        console.log('pos')
+        pos = 0;
+        while (pos < this.content[count].text.length) {
+            if (text.indexOf('@font-face', pos) == -1) break;
+
+
+            pos = ranges.start = text.indexOf('@font-face', pos);
+            console.log(pos)
+            pos = ranges.end = text.indexOf('}', pos) + 1;
+            console.log(pos)
+
+            ranges.push(ranges);
+        }
+
+
 
         sortByAge(ranges);
 
@@ -61,6 +73,7 @@ class Coverage {
             this.showUseCSS(row);
 
         }
+
     }
 
     showUseCSS = function (row) {
