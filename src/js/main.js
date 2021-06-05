@@ -33,25 +33,22 @@ class Coverage {
             ranges.push(rangeDown);
 
         }
-        console.log('pos')
         pos = 0;
         while (pos < this.content[count].text.length) {
             if (text.indexOf('@font-face', pos) == -1) break;
 
 
             pos = ranges.start = text.indexOf('@font-face', pos);
-            console.log(pos)
             pos = ranges.end = text.indexOf('}', pos) + 1;
-            console.log(pos)
 
             ranges.push(ranges);
         }
 
 
 
-        sortByAge(ranges);
+        sortRanges(ranges);
 
-        function sortByAge(arr) {
+        function sortRanges(arr) {
             arr.sort((a, b) => a.start > b.start ? 1 : -1);
         }
 

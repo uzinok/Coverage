@@ -293,7 +293,7 @@ exports.fonts = fonts;
  */
 
 const lessToCssBuild = () => {
-  return src('src/less/style.less')
+  return src('src/less/test.less')
     .pipe(less())
     .pipe(autoprefixer({
       grid: true,
