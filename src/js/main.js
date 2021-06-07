@@ -94,3 +94,16 @@ class Coverage {
 }
 
 let res = new Coverage(data, false)
+
+
+
+function fib(x) {
+    if (x == 0) {
+        return 0
+    }
+    if (x == 1) {
+        return 1
+    }
+    return fib(x - 2) + fib(x - 1)
+}
+console.log(fib(10))
