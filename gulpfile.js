@@ -19,8 +19,6 @@ const browserSync = require('browser-sync').create();
 // error
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
-// map
-const sourcemaps = require('gulp-sourcemaps');
 
 /**
  * copy
@@ -44,23 +42,7 @@ exports.clean = clean;
  */
 const lessToCss = () => {
   return src('src/less/style.less')
-    .pipe(plumber({
-      errorHandler: notify.onError(function (err) {
-        return {
-          title: 'Less',
-          message: err.message
-        }
-      })
-    }))
-    .pipe(sourcemaps.init())
     .pipe(less())
-    .pipe(autoprefixer({
-      grid: true,
-      overrideBrowserslist: ['last 10 versions']
-    }))
-    .pipe(gcmq())
-    .pipe(csso())
-    .pipe(sourcemaps.write())
     .pipe(dest('build/css'))
     .pipe(browserSync.stream());
 }
@@ -106,8 +88,6 @@ const scripts = () => {
         }]
       }
     }))
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write())
     .pipe(dest('build/js'))
     .pipe(browserSync.stream());
 }
