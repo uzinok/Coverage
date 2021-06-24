@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+  padding-bottom: 50px;
+}
+textarea {
+  height: 30vh;
+  width: 90%;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+}
