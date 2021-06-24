@@ -1,5 +1,5 @@
 {
-  "name": "bolt",
+  "name": "coverage",
   "version": "0.0.0",
   "description": "html less babel",
   "main": "main.js",
@@ -29,5 +29,9 @@
     "gulp-webp": "^4.0.1",
     "webpack": "^5.4.0",
     "webpack-stream": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uzinok/Coverage"
   }
 }
